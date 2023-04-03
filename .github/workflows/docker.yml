@@ -5,10 +5,6 @@ on:
     - cron: "0 0 * * 0"
   push:
     branches: [ main ]
-
-env:
-  IMAGE_NAME: 'docker-laravel-arm64'
-
 jobs:
   matrix:
     runs-on: ubuntu-latest
@@ -47,6 +43,10 @@ jobs:
       - name: 'Checkout repository'
         uses: actions/checkout@v3
 
+      - name: Store repo name and owner in lower case
+        shell: bash
+        run: echo "LOWER_CASE_REPO_NAME=$(echo ${GITHUB_REPOSITORY} | tr /A-Z/ /a-z/)" >> $GITHUB_ENV
+
       - name: 'Setup PHP'
         uses: shivammathur/setup-php@v2
         with:
@@ -79,7 +79,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.LOWER_CASE_REPO_NAME }}
           tags: |
             type=raw,value=${{ matrix.configuration }}
 
