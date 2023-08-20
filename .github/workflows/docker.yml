@@ -23,7 +23,7 @@ jobs:
       - name: 'Load configurations'
         id: configurations
         working-directory: scripts
-        run: echo "::set-output name=configurations::$(php configurations.php)"
+        run: echo "configurations=$(php configurations.php)" >> $GITHUB_OUTPUT
       
     outputs:
       configurations: ${{ steps.configurations.outputs.configurations }}
