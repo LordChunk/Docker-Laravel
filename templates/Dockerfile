@@ -2,11 +2,16 @@ FROM %FROM%
 
 WORKDIR /var/www
 
-# NodeJS
-RUN curl -o- https://deb.nodesource.com/setup_16.x | bash
+# Install Node.js from nodesource.com
+ENV NODE_MAJOR=18
 
-# Dependencies
-RUN apt-get update && apt-get install -y git nginx xz-utils nodejs
+RUN apt update && \
+    apt install -y ca-certificates curl gnupg && \
+    mkdir -p /etc/apt/keyrings && \
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
+    apt update && \
+    apt install -y git nginx xz-utils nodejs
 
 # S6 Overlay
 ARG OVERLAY_VERSION="v3.1.1.2"

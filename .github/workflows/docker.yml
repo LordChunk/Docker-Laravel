@@ -5,6 +5,8 @@ on:
     - cron: "0 0 * * 0"
   push:
     branches: [ main ]
+  pull_request:
+
 jobs:
   matrix:
     runs-on: ubuntu-latest
