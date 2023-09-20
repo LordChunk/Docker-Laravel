@@ -3,7 +3,7 @@ FROM %FROM%
 WORKDIR /var/www
 
 # NodeJS
-RUN curl -o- https://deb.nodesource.com/setup_16.x | bash
+RUN curl -o- https://deb.nodesource.com/setup_18.x | bash
 
 # Dependencies
 RUN apt-get update && apt-get install -y git nginx xz-utils nodejs
