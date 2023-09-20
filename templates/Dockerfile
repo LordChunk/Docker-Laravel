@@ -2,10 +2,9 @@ FROM %FROM%
 
 WORKDIR /var/www
 
-# Set env
-ENV NODE_MAJOR=18 
+# Install Node.js from nodesource.com
+ENV NODE_MAJOR=18
 
-# NodeJS
 RUN apt update && \
     apt install -y ca-certificates curl gnupg && \
     mkdir -p /etc/apt/keyrings && \
