@@ -3,7 +3,7 @@ FROM %FROM%
 WORKDIR /var/www
 
 # Install Node.js from nodesource.com
-ENV NODE_MAJOR=18
+ENV NODE_MAJOR=20
 
 RUN apt update && \
     apt install -y ca-certificates curl gnupg && \
