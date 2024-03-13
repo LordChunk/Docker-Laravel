@@ -14,7 +14,7 @@ RUN apt update && \
     apt install -y git nginx xz-utils nodejs
 
 # S6 Overlay
-ARG OVERLAY_VERSION="v3.1.1.2"
+ARG OVERLAY_VERSION="v3.1.6.2"
 ARG OVERLAY_ARCH="aarch64"
 
 ENV S6_KEEP_ENV=1
