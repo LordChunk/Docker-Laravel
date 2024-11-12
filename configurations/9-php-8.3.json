@@ -13,6 +13,7 @@
         "pcre",
         "tokenizer",
         "xml",
-        "zip"
+        "zip",
+        "excimer"
     ]
 }
